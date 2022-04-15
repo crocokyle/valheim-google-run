@@ -1,7 +1,7 @@
 # valheim-google-run
 Repo to run Valheim in a docker container on Google Run
 
-### GCP Shell Commands
+## GCP Shell Commands
 ```bash
 mkdir -p $HOME/valheim-server/config/worlds $HOME/valheim-server/data
 # copy existing world
@@ -17,3 +17,15 @@ docker run -d \
     -e SERVER_PASS="password" \
     lloesche/valheim-server
 ```
+
+## Migrating existing servers
+
+### Windows:
+- Copy the files from `C:\Users\<username>\AppData\LocalLow\IronGate\Valheim\worlds` to `$HOME/valheim-server/config/worlds`
+- Run the image with the `$HOME/vaheim-server/config` volume mounted to `/config` in the container.
+---
+**NOTE**
+
+*The container directory /opt/valheim contains the downloaded server. It can optionally be volume mounted to avoid having to download the server on each fresh start.*
+
+---
