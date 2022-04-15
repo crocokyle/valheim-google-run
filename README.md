@@ -1,5 +1,5 @@
 # valheim-google-run
-Repo to run Valheim in a docker container on Google Run
+Repo to run Valheim in a docker container on Google Run. Adapted from https://github.com/lloesche/valheim-server-docker#valheimplus
 
 ## GCP Shell Commands
 #### Create initial directories
