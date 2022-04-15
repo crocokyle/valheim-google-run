@@ -85,3 +85,54 @@ All variable names and values are case-sensitive!
 |SYSLOG_REMOTE_AND_LOCAL|true|When sending logs to a remote syslog server also log local|
 |PUID|0|UID to run valheim-server as|
 |PGID|0|GID to run valheim-server as|
+
+---
+
+## Mods
+
+## Mod config from Environment Variables
+Mod config can be specified in environment variables using the syntax `<prefix>_<section>_<variable>=<value>`.
+
+**Predefined prefix list**
+| Prefix | Mod | File |
+|----------|----------|----------|
+| `VPCFG` | ValheimPlus | `/config/valheimplus/valheim_plus.cfg` |
+| `BEPINEXCFG` | BepInEx | `/config/valheimplus/BepInEx.cfg` or `/config/bepinex/BepInEx.cfg` depending on whether `VALHEIM_PLUS=true` or `BEPINEX=true` |
+
+
+**Translation table**  
+Some characters that are allowed as section names in the config files are not allowed as environment variable names. They can be encoded using the following translation table.
+| Variable name string | Replacement |
+|----------|----------|
+| `_DOT_` | `.` |
+| `_HYPHEN_` | `-` |
+| `_UNDERSCORE_` | `_` |
+| `_PLUS_` | `+` |
+
+Example:
+```
+-e VALHEIM_PLUS=true \
+-e VPCFG_Server_enabled=true \
+-e VPCFG_Server_enforceMod=false \
+-e VPCFG_Server_dataRate=500 \
+-e BEPINEXCFG_Logging_DOT_Console_Enabled=true
+```
+
+turns into `/config/valheimplus/valheim_plus.cfg`
+```
+[Server]
+enabled=true
+enforceMod=false
+dataRate=500
+```
+
+and `/config/valheimplus/BepInEx.cfg`
+```
+[Logging.Console]
+Enabled=true
+```
+
+All existing configuration in those files is retained and a backup of the old config is created as e.g. `/config/valheimplus/valheim_plus.cfg.old` before writing the new config file.
+
+You could generate your own custom plugin config from environment variables using [the `POST_BEPINEX_CONFIG_HOOK` event hook](#event-hooks) and [`env2cfg`](https://github.com/lloesche/valheim-server-docker/tree/main/env2cfg).
+
