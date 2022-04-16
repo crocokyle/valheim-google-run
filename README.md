@@ -1,3 +1,8 @@
+# GCP One-liner
+```bash
+gcloud compute instance-templates create-with-container valheim-4gb-container --project=valheim-808 --machine-type=e2-medium --network-interface=network=default,network-tier=PREMIUM --maintenance-policy=MIGRATE --service-account=860324119380-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --tags=http-server,https-server --container-image=gcr.io/valheim-808/llosche/valheim-server --container-restart-policy=always --container-arg=--name\ valheim-server --container-arg=--cap-add=sys_nice --container-arg=--stop-timeout\ 120 --container-arg=-p\ 2456-2457:2456-2457/udp --container-env=SERVER_NAME=ServerMcServie,WORLD_NAME=ElmosWorld,SERVER_PASS=titties --container-mount-host-path=host-path=\$HOME/valheim-server/config,mode=directory,mount-path=/config --container-mount-host-path=host-path=\$HOME/valheim-server/data,mode=directory,mount-path=/opt/valheim --create-disk=auto-delete=yes,boot=yes,device-name=valheim-4gb-container,image=projects/cos-cloud/global/images/cos-stable-97-16919-29-9,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=container-vm=cos-stable-97-16919-29-9
+```
+
 # valheim-google-run
 Repo to run Valheim in a docker container on Google Run. Adapted from https://github.com/lloesche/valheim-server-docker#valheimplus
 
