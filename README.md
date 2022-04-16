@@ -27,7 +27,7 @@ docker run -d \
     -v $HOME/valheim-server/data:/opt/valheim \
     -e SERVER_NAME="ServerMcServie" \
     -e WORLD_NAME="ElmosWorld" \
-    -e SERVER_PASS="titties" \
+    -e SERVER_PASS="" \
     lloesche/valheim-server
 ```
 
