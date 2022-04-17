@@ -19,6 +19,7 @@ mkdir -p $HOME/valheim-server/config/worlds $HOME/valheim-server/data
 #### Start the server
 ```bash
 docker run -d \
+    --restart unless-stopped \
     --name valheim-server \
     --cap-add=sys_nice \
     --stop-timeout 120 \
