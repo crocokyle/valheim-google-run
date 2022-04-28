@@ -29,6 +29,7 @@ docker run -d \
     -e SERVER_NAME="QuackingWolves" \
     -e WORLD_NAME="QuackingWolves" \
     -e SERVER_PASS="" \
+    -e SERVER_PUBLIC="true" \
     lloesche/valheim-server
 ```
 
