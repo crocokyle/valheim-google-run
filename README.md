@@ -30,6 +30,7 @@ docker run -d \
     -e WORLD_NAME="Vervey" \
     -e SERVER_PASS="" \
     -e SERVER_PUBLIC="true" \
+    -e VALHEIM_PLUS="true" \
     lloesche/valheim-server
 ```
 
