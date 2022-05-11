@@ -26,8 +26,8 @@ docker run -d \
     -p 2456-2457:2456-2457/udp \
     -v $HOME/valheim-server/config:/config \
     -v $HOME/valheim-server/data:/opt/valheim \
-    -e SERVER_NAME="QuackingWolves" \
-    -e WORLD_NAME="QuackingWolves" \
+    -e SERVER_NAME="Vervey" \
+    -e WORLD_NAME="Vervey" \
     -e SERVER_PASS="" \
     -e SERVER_PUBLIC="true" \
     lloesche/valheim-server
